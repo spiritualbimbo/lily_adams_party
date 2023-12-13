@@ -54,7 +54,7 @@ const OnlyFans = () => {
         <div
           className="column-header bg-cover bg-center bg-no-repeat h-48"
           style={{
-            backgroundImage: 'url("src/assets/spiritualbimbo-header.jpg")',
+            backgroundImage: 'url("./src/assets/spiritualbimbo-header.jpg")',
           }}
         >
           {/* header text */}
@@ -95,7 +95,7 @@ const OnlyFans = () => {
         {/* profile image */}
         <div className="absolute top-40 left-3 status-img w-32 h-32 rounded-full border-white border-2 ">
           <img
-            src="src/assets/spiritualbimbo.jpg"
+            src="./src/assets/spiritualbimbo.jpg"
             alt="status image"
             className="w-full h-full rounded-full object-cover"
           />
