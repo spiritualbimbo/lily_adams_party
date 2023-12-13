@@ -5,14 +5,14 @@ const HomePage = () => {
   return (
     <div
       className="bg-image bg-repeat w-full h-screen flex justify-center items-center "
-      style={{ backgroundImage: 'url("../src/assets/lily_adams2.jpg")', backgroundSize: 'contain', backgroundPosition:'top left'  }}
+      style={{ backgroundImage: 'url("./src/assets/lily_adams2.jpg")', backgroundSize: 'contain', backgroundPosition:'top left'  }}
     >
       <div className="modal bg-[#ffffffb6] rounded-lg p-6 relative">
         <div className="modal-content mt-20">
           <div className="modal-body flex flex-col justify-center items-center">
             <div className="modal-image-container bg-[#D33467] w-[150px] h-[150px] rounded-full flex justify-center items-center absolute top-[-70px]">
               <img
-                src="../src/assets/lily_adams.jpg"
+                src="./src/assets/lily_adams.jpg"
                 alt="profile image"
                 className="h-[94%] w-[94%] rounded-full border-4 border-white "
               />
