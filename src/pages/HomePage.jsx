@@ -2,12 +2,13 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 import LilyProfile from '/src/assets/lily_adams.jpg';
+import LilyBackground from '/src/assets/lily_adams2.jpg';
 
 const HomePage = () => {
   return (
     <div
       className="bg-image bg-repeat w-full h-screen flex justify-center items-center "
-      style={{ backgroundImage: 'url("./src/assets/lily_adams2.jpg")', backgroundSize: 'contain', backgroundPosition:'top left'  }}
+      style={{ backgroundImage: `url(${LilyBackground})`, backgroundSize: 'contain', backgroundPosition:'top left'  }}
     >
       <div className="modal bg-[#ffffffb6] rounded-lg p-6 relative">
         <div className="modal-content mt-20">
