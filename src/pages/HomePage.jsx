@@ -1,6 +1,8 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
+import LilyProfile from '/src/assets/lily_adams.jpg';
+
 const HomePage = () => {
   return (
     <div
@@ -12,9 +14,9 @@ const HomePage = () => {
           <div className="modal-body flex flex-col justify-center items-center">
             <div className="modal-image-container bg-[#D33467] w-[150px] h-[150px] rounded-full flex justify-center items-center absolute top-[-70px]">
               <img
-                src="./src/assets/lily_adams.jpg"
+                src={LilyProfile}
                 alt="profile image"
-                className="h-[94%] w-[94%] rounded-full border-4 border-white "
+                className="h-[94%] w-[94%] rounded-full border-4 border-white"
               />
             </div>
             <div className="text-center">
