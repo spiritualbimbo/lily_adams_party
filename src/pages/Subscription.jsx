@@ -3,6 +3,10 @@ import React, { useState } from "react";
 const Subscription = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [preview, setPreview] = useState(null);
+  const [copySuccess, setCopySuccess] = useState(false);
+  const [submitted, setSubmitted] = useState(false)
+
+  const inputValue = '16CQZUY99oAspS611ADctUHAxCQBGLgzWP';
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -29,29 +33,48 @@ const Subscription = () => {
   };
 
   return (
-    <form className="flex justify-center items-center flex-col">
-      <h2 className="text-[40px] font-bold ">Payment Steps</h2>
+    <form className="flex justify-center items-center flex-col " onSubmit={(e)=>{
+      e.preventDefault()
+      setSubmitted(true)
+      setTimeout(() => {
+        setSubmitted(false);
+      }, 4000); // Display copied text notification for 2 seconds
+    }}>
+      <h2 className="md:text-[40px] text-[30px] font-bold  ">Payment Steps</h2>
       <div className="">
         {/* STEP ONE */}
-        <div className="step-one">
+        <div className="step-one md:w-[400px] lg:w-[600px] w-64">
           <p>
             <span className="text-[#D33467]">step 1:</span> copy the bitcoin
             wallet and make payment from your preferred payment platform
           </p>
 
           <br />
-          <button className="edit bg-[#D33467] text-white px-5 py-2 mr-3 rounded">
+          <button className="edit bg-[#D33467] text-white px-2 sm:px-3 md:px-5 py-2 mr-3 rounded" onClick={(e)=>{
+            e.preventDefault();
+             navigator.clipboard.writeText(inputValue)
+             .then(()=>{
+              console.log('copied successfully');
+              setCopySuccess(true);
+          setTimeout(() => {
+            setCopySuccess(false);
+          }, 2000); // Display copied text notification for 2 seconds
+             })
+          }}>
             copy
+
           </button>
           <input
             type="text"
-            className="border-2 border-black rounded p-2 w-[400px]"
+            className="border-2 border-black rounded p-2 w-40 lg:text-lg text-sm md:w-[300px]"
             value="16CQZUY99oAspS611ADctUHAxCQBGLgzWP"
           />
+
+          {copySuccess && <p className="text-green-400">Copied to clipboard!</p>}
         </div>
 
         {/* STEP TWO */}
-        <div className="step-two mt-20">
+        <div className="step-two mt-20  md:w-[400px] lg:w-[600px] w-64">
           <span className="text-[#D33467]">step 2:</span> upload the
           screenshot/receipt of your payment here
           <div className="relative">
@@ -79,7 +102,7 @@ const Subscription = () => {
 
         {/* STEP THREE */}
 
-        <div className="step-three mt-20">
+        <div className="step-three mt-20  md:w-[400px] lg:w-[600px] w-64">
           <p>
             <span className="text-[#D33467]">step 3:</span> Fill in the form with the appropriate details
           </p>
@@ -94,7 +117,7 @@ const Subscription = () => {
         </div>
 
         {/* STEP FOUR */}
-        <div className=" step-four mt-20">
+        <div className=" step-four mt-20  md:w-[400px] lg:w-[600px] w-64 mb-10">
           <p>
             <span className="text-[#D33467]">step 4:</span> click on 'submit'
             and await confirmation message in your E-mail
@@ -104,7 +127,9 @@ const Subscription = () => {
               type="submit"
               value="submit"
               className="bg-[#d33467] text-white px-10  py-2 rounded hover:scale-105"
+              
             />
+            {submitted && <p className="text-red-700 sm:text-lg text-sm">please fill in the form with correct details</p>}
           </div>
         </div>
       </div>
