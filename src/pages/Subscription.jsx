@@ -51,7 +51,7 @@ const Subscription = () => {
       <div className="absolute w-full h-full top-0 left-0 bg-black opacity-60"></div>
           <h4 className=" text-white italic z-10">powered by bitPay</h4>
 
-      <h2 className="md:text-[40px] text-[30px] text-[#f04b7f] font-bold z-10 p-2 bg-white rounded-xl mb-5 mt-2">Payment Steps</h2>
+      <h2 className="md:text-[40px] text-[30px] text-[#f04b7f] font-bold z-10 p-2 bg-white rounded-xl mb-20 mt-2">Payment Steps</h2>
       <div className="z-10">
         {!contBtn ? 
         (
@@ -91,7 +91,7 @@ const Subscription = () => {
             screenshot/receipt of your payment here
             <div className="relative">
               <button
-                className="edit text-white px-2 mr-3 mt-4 min-h-[200px] min-w-[200px] border-2 border-black overflow-hidden rounded"
+                className="edit text-white px-2 mr-3 mt-4 min-h-[200px] min-w-[200px] border-2 bg-white border-black overflow-hidden rounded"
                 onClick={handleUpload}
               >
                 
