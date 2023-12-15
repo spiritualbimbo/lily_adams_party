@@ -57,7 +57,9 @@ const handleSubmit = (e)=>{
 
   return (
     <>
-    <form className="flex justify-center items-center flex-col min-h-screen relative" 
+    {
+      !submitted ? (
+        <form className="flex justify-center items-center flex-col min-h-screen relative" 
           style={{ backgroundImage: `url(${PaymentBackground})`, backgroundSize: 'cover', backgroundPosition:'center', backgroundRepeat: 'no-repeat'  }}
  onSubmit={ handleSubmit}>
       <div className="absolute w-full h-full top-0 left-0 bg-black opacity-60"></div>
@@ -164,7 +166,7 @@ const handleSubmit = (e)=>{
 
               
             />
-            {!submitted ? <p className="text-red-700 sm:text-lg text-sm">please fill in the form with correct details</p> : <Submitted />}
+            {!submitted && <p className="text-red-700 sm:text-lg text-sm">please fill in the form with correct details</p>}
           </div>
         </div>
         </>
@@ -176,6 +178,11 @@ const handleSubmit = (e)=>{
   
       </div>
     </form>
+      ) : (
+        <Submitted />
+      )
+    }
+    
     </>
   );
 };
