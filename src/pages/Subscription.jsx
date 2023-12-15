@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { IoArrowBackCircleOutline } from "react-icons/io5";
 import PaymentBackground from "/src/assets/payment-background.jpg";
+import Submitted from "./Submitted";
 
 const Subscription = () => {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -8,8 +9,25 @@ const Subscription = () => {
   const [copySuccess, setCopySuccess] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [contBtn, setContBtn] = useState(false);
+  const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
 
   
+const handleSubmit = (e)=>{
+  
+    e.preventDefault()
+    if(name && email){
+      setSubmitted(true)
+
+    }else{
+      setSubmitted(false)
+    }
+
+    /* setTimeout(() => {
+      setSubmitted(false);
+    }, 4000); // Display copied text notification for 2 seconds */
+  
+}
 
   const inputValue = '16CQZUY99oAspS611ADctUHAxCQBGLgzWP';
 
@@ -41,13 +59,7 @@ const Subscription = () => {
     <>
     <form className="flex justify-center items-center flex-col min-h-screen relative" 
           style={{ backgroundImage: `url(${PaymentBackground})`, backgroundSize: 'cover', backgroundPosition:'center', backgroundRepeat: 'no-repeat'  }}
- onSubmit={(e)=>{
-      e.preventDefault()
-      setSubmitted(true)
-      setTimeout(() => {
-        setSubmitted(false);
-      }, 4000); // Display copied text notification for 2 seconds
-    }}>
+ onSubmit={ handleSubmit}>
       <div className="absolute w-full h-full top-0 left-0 bg-black opacity-60"></div>
           <h4 className=" text-white italic z-10">powered by bitPay</h4>
 
@@ -127,11 +139,15 @@ const Subscription = () => {
           </p>
           <div className="my-5">
           <label htmlFor="name" className="mr-10 text-white text-xl" >Name:</label>
-          <input type="text" id="name" className="border border-black focus:outline-[#d33467] mr-10 placeholder:text-center p-2" placeholder="input your name"/> <br />
+          <input type="text" id="name" className="border border-black focus:outline-[#d33467] mr-10 placeholder:text-center p-2" placeholder="input your name"  value={name} onChange={(e)=>{
+            setName(e.target.value)
+          }}/> <br />
 
           </div>
           <label htmlFor="email" className="mr-10 text-white text-xl">E-mail:</label>
-          <input type="email" id="email" placeholder="input your email address" className="border border-black focus:outline-[#d33467] placeholder:text-center p-2"/> <br />
+          <input type="email" id="email" placeholder="input your email address" className="border border-black focus:outline-[#d33467] placeholder:text-center p-2"  value={email} onChange={(e)=>{
+            setEmail(e.target.value)
+          }}/> <br />
         
         </div>
 
@@ -145,9 +161,10 @@ const Subscription = () => {
               type="submit"
               value="submit"
               className="bg-[#d33467] text-white px-10  py-2 rounded hover:scale-105"
+
               
             />
-            {submitted && <p className="text-red-700 sm:text-lg text-sm">please fill in the form with correct details</p>}
+            {!submitted ? <p className="text-red-700 sm:text-lg text-sm">please fill in the form with correct details</p> : <Submitted />}
           </div>
         </div>
         </>
